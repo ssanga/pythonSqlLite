@@ -18,6 +18,7 @@ def trying_countries():
     code = ('AFG',)
     cur.execute('SELECT * FROM countries WHERE "alpha-3" = ?', code)
     print(cur.fetchone())
+    conn.close()
 
     
 def trying_consumers():
@@ -25,9 +26,22 @@ def trying_consumers():
     conn = sqlite3.connect('pythonSqlLite.db')
     cur = conn.cursor()
     
-    cur.execute("INSERT INTO consumers VALUES (1,'John Doe','john.doe@xyz.com','A')")
+    cur.execute("INSERT INTO consumers VALUES (2,'John Doe','john.doe@xyz.com','A')")
+    for row in cur.execute('SELECT * FROM consumers'):
+        print(row)
+        
+    # Prepare a list of records to be inserted
+    purchases = [(3,'John Paul','john.paul@xyz.com','B'),
+             (4,'Chris Paul','john.paul@xyz.com','A'),]
+
+    # Use executemany() to insert multiple records at a time
+    cur.executemany('INSERT INTO consumers VALUES (?,?,?,?)', purchases)
     for row in cur.execute('SELECT * FROM consumers'):
         print(row)
 
+    conn.commit()
+    conn.close()
+    
 if __name__ == "__main__":
     trying_countries()
+    trying_consumers()

@@ -1,6 +1,7 @@
 #https://www.datacamp.com/community/tutorials/sqlite-in-python?utm_source=adwords_ppc&utm_campaignid=898687156&utm_adgroupid=48947256715&utm_device=c&utm_keyword=&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=229765585186&utm_targetid=aud-299261629574:dsa-429603003980&utm_loc_interest_ms=&utm_loc_physical_ms=9061040&gclid=Cj0KCQjwy8f6BRC7ARIsAPIXOjh5N3lHWqM3vGAJ5lpTaCQ2CQnJgjsHCuLdXVE-jLyYJIAMOhbtT5saAkFFEALw_wcB
 
 import sqlite3
+import pythonSqlLite_SQLAlchemy
 
 def trying_countries():
 
@@ -43,5 +44,15 @@ def trying_consumers():
     conn.close()
     
 if __name__ == "__main__":
-    trying_countries()
-    trying_consumers()
+    # trying_countries()
+    # trying_consumers()
+    
+    dbms = pythonSqlLite_SQLAlchemy.MyDatabase(pythonSqlLite_SQLAlchemy.SQLITE, dbname='pythonSqlLite.db')
+    
+    # dbms.insert_single_data()
+    dbms.print_all_data(pythonSqlLite_SQLAlchemy.COUNTRIES)
+    dbms.print_all_data(pythonSqlLite_SQLAlchemy.CONSUMERS)
+    # dbms.sample_query() # simple query
+    # dbms.sample_delete() # delete data
+    # dbms.sample_insert() # insert data
+    # dbms.sample_update() # update data

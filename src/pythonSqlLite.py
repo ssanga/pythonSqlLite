@@ -47,7 +47,7 @@ if __name__ == "__main__":
     # trying_countries()
     # trying_consumers()
     
-    dbms = pythonSqlLite_SQLAlchemy.MyDatabase(pythonSqlLite_SQLAlchemy.SQLITE, dbname='pythonSqlLite.db')
+    dbms = pythonSqlLite_SQLAlchemy.MyDatabase(dbname='pythonSqlLite.db')
     
     # dbms.insert_single_data()
     dbms.print_all_data(pythonSqlLite_SQLAlchemy.COUNTRIES)
